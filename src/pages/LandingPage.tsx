@@ -12,7 +12,6 @@ const LandingPage = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
-  const [authMode, setAuthMode] = useState<'login' | 'signup'>('login');
 
   useEffect(() => {
     // Check for saved theme preference or use system preference
@@ -154,10 +153,10 @@ const LandingPage = () => {
               <button onClick={() => scrollToSection('benefits')} className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition flex items-center">
                 <RiAwardLine className="mr-2" /> Benefits
               </button>
-              <Link to="/login" onClick={() => setAuthMode('login')} className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition flex items-center">
+              <Link to="/login" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition flex items-center">
                 <RiLoginBoxLine className="mr-2" /> Login
               </Link>
-              <Link to="/login" onClick={() => setAuthMode('signup')} className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition flex items-center justify-center">
+              <Link to="/login" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition flex items-center justify-center">
                 <RiUserAddLine className="mr-2" /> Sign Up
               </Link>
               
@@ -199,10 +198,10 @@ const LandingPage = () => {
             <button onClick={() => scrollToSection('benefits')} className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition flex items-center">
               <RiAwardLine className="mr-2" /> Benefits
             </button>
-            <Link to="/login" onClick={() => setAuthMode('login')} className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition flex items-center">
+            <Link to="/login" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition flex items-center">
               <RiLoginBoxLine className="mr-2" /> Login
             </Link>
-            <Link to="/login" onClick={() => setAuthMode('signup')} className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition flex items-center justify-center">
+            <Link to="/login" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition flex items-center justify-center">
               <RiUserAddLine className="mr-2" /> Sign Up
             </Link>
             
@@ -236,10 +235,10 @@ const LandingPage = () => {
               A unified platform for students, lecturers, and course representatives to access, share, and manage all academic materials in one place.
             </p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              <Link to="/login" onClick={() => setAuthMode('login')} className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg text-center font-medium transition flex items-center justify-center">
+              <Link to="/login" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg text-center font-medium transition flex items-center justify-center">
                 <RiLoginBoxLine className="mr-2" /> Login
               </Link>
-              <Link to="/login" onClick={() => setAuthMode('signup')} className="bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 px-6 py-3 rounded-lg text-center font-medium transition flex items-center justify-center">
+              <Link to="/login" className="bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 px-6 py-3 rounded-lg text-center font-medium transition flex items-center justify-center">
                 <RiUserAddLine className="mr-2" /> Sign Up
               </Link>
             </div>
@@ -592,10 +591,10 @@ const LandingPage = () => {
               Join thousands of students, lecturers, and institutions already using Courseware Cloud.
             </p>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-              <Link to="/login" onClick={() => setAuthMode('login')} className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-lg text-center font-medium transition flex items-center justify-center">
+              <Link to="/login" className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-lg text-center font-medium transition flex items-center justify-center">
                 <RiLoginBoxLine className="mr-2" /> Get Started
               </Link>
-              <Link to="/login" onClick={() => setAuthMode('signup')} className="bg-blue-700 hover:bg-blue-800 text-white px-8 py-3 rounded-lg text-center font-medium transition flex items-center justify-center">
+              <Link to="/login" className="bg-blue-700 hover:bg-blue-800 text-white px-8 py-3 rounded-lg text-center font-medium transition flex items-center justify-center">
                 <RiUserAddLine className="mr-2" /> Sign Up
               </Link>
             </div>
