@@ -1,8 +1,8 @@
 
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-import { Button } from '../ui/button';
-import { Badge } from '../ui/badge';
+import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
+import { Button } from '../../../components/ui/button';
+import { Badge } from '../../../components/ui/badge';
 import { MoreHorizontal, UserPlus } from 'lucide-react';
 
 export const UserManagement: React.FC = () => {
@@ -44,7 +44,7 @@ export const UserManagement: React.FC = () => {
                 <Badge variant={user.status === 'Active' ? 'default' : 'outline'}>
                   {user.status}
                 </Badge>
-                <Button variant="ghost" size="icon">
+                <Button variant="ghost" size="sm">
                   <MoreHorizontal className="h-4 w-4" />
                 </Button>
               </div>

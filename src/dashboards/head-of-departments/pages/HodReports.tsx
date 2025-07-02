@@ -1,10 +1,10 @@
 
-import React, { useState } from 'react';
-import { HodLayout } from '@/components/hod/HodLayout';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { FileText, Download, Calendar, TrendingUp, Users, Book, Clock, Filter } from 'lucide-react';
+import { useState } from 'react';
+import { HodLayout } from '../components/HodLayout';
+import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
+import { Button } from '../../../components/ui/button';
+import { Badge } from '../../../components/ui/badge';
+import { FileText, Download, Calendar, TrendingUp, Users, Book, Clock } from 'lucide-react';
 
 const HodReports = () => {
   const [selectedPeriod, setSelectedPeriod] = useState('current');

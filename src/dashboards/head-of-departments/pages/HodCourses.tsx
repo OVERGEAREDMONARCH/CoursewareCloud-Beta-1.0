@@ -1,11 +1,11 @@
 
-import React, { useState } from 'react';
-import { HodLayout } from '@/components/hod/HodLayout';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
-import { Book, Users, Clock, Calendar, Search, Filter, Plus, BarChart3 } from 'lucide-react';
+import { useState } from 'react';
+import { HodLayout } from '../components/HodLayout';
+import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
+import { Button } from '../../../components/ui/button';
+import { Badge } from '../../../components/ui/badge';
+import { Input } from '../../../components/ui/input';
+import { Users, Clock, Calendar, Search, Plus, BarChart3 } from 'lucide-react';
 
 const HodCourses = () => {
   const [searchTerm, setSearchTerm] = useState('');

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Users, BookOpen, GraduationCap, TrendingUp } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
 
 export const AdminStats: React.FC = () => {
   const stats = [

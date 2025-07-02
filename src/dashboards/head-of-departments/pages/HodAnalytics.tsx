@@ -1,10 +1,10 @@
 
-import React, { useState } from 'react';
-import { HodLayout } from '@/components/hod/HodLayout';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { useState } from 'react';
+import { HodLayout } from '../components/HodLayout';
+import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
+import { Button } from '../../../components/ui/button';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell } from 'recharts';
-import { TrendingUp, TrendingDown, Users, Book, Calendar, Award } from 'lucide-react';
+import { TrendingUp, TrendingDown, Users, Book, Award } from 'lucide-react';
 
 const HodAnalytics = () => {
   const [selectedMetric, setSelectedMetric] = useState('enrollment');

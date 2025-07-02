@@ -12,9 +12,7 @@ import {
   Settings,
   ChevronLeft,
   ChevronRight,
-  Building,
-  UserCheck,
-  FileText
+  Building
 } from 'lucide-react';
 
 interface HodSidebarProps {

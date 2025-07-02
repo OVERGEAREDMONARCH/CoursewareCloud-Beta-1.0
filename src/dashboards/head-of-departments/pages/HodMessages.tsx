@@ -1,19 +1,31 @@
 
-import React, { useState } from 'react';
-import { HodLayout } from '@/components/hod/HodLayout';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Search, Send, Paperclip, Star, Archive, Trash2, Mail, Users, Clock } from 'lucide-react';
+import { useState } from 'react';
+import { HodLayout } from '../components/HodLayout';
+import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
+import { Button } from '../../../components/ui/button';
+import { Badge } from '../../../components/ui/badge';
+import { Input } from '../../../components/ui/input';
+import { Avatar, AvatarFallback, AvatarImage } from '../../../components/ui/avatar';
+import { Search, Send, Paperclip, Star, Archive, Trash2, Mail, Users, } from 'lucide-react';
+
+type Message = {
+  id: number;
+  sender: string;
+  subject: string;
+  preview: string;
+  time: string;
+  read: boolean;
+  priority: string;
+  category: string;
+  full: string;
+};
 
 const HodMessages = () => {
-  const [selectedMessage, setSelectedMessage] = useState(null);
+  const [selectedMessage, setSelectedMessage] = useState<Message | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [activeTab, setActiveTab] = useState('inbox');
 
-  const messages = [
+  const messages: Message[] = [
     {
       id: 1,
       sender: 'Dr. Sarah Chen',

@@ -1,9 +1,7 @@
-
-import React from 'react';
-import { HodLayout } from '@/components/hod/HodLayout';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import { HodLayout } from '../components/HodLayout';
+import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
+import { Button } from '../../../components/ui/button';
+import { Badge } from '../../../components/ui/badge';
 import { Users, Book, TrendingUp, Clock, MessageSquare, AlertTriangle, CheckCircle, Calendar } from 'lucide-react';
 
 const HodDashboard = () => {
