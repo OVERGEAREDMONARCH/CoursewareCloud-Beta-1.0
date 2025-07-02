@@ -1,11 +1,11 @@
 
 import React, { useState } from 'react';
-import { AdminLayout } from '../../components/admin/AdminLayout';
-import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
-import { Button } from '../../components/ui/button';
-import { Input } from '../../components/ui/input';
-import { Badge } from '../../components/ui/badge';
-import { Search, UserPlus, Edit, Trash2, Mail, Phone, Building2 } from 'lucide-react';
+import { AdminLayout } from '../components/AdminLayout';
+import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
+import { Button } from '../../../components/ui/button';
+import { Input } from '../../../components/ui/input';
+import { Badge } from '../../../components/ui/badge';
+import { Search, UserPlus, Edit, Mail, Phone, Building2 } from 'lucide-react';
 
 const HeadOfDepartment: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -185,7 +185,7 @@ const HeadOfDepartment: React.FC = () => {
                         </div>
                       </div>
                       <div className="flex gap-2">
-                        <Button variant="ghost" size="icon">
+                        <Button variant="ghost" size="sm">
                           <Edit className="h-4 w-4" />
                         </Button>
                       </div>

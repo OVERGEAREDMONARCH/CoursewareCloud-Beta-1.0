@@ -1,11 +1,11 @@
 
 import React from 'react';
-import { AdminLayout } from '../../components/admin/AdminLayout';
-import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
-import { Button } from '../../components/ui/button';
-import { Input } from '../../components/ui/input';
-import { Label } from '../../components/ui/label';
-import { Badge } from '../../components/ui/badge';
+import { AdminLayout } from '../components/AdminLayout';
+import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
+import { Button } from '../../../components/ui/button';
+import { Input } from '../../../components/ui/input';
+import { Label } from '../../../components/ui/label';
+import { Badge } from '../../../components/ui/badge';
 import { Settings, Server, Globe, Shield, Mail, Database } from 'lucide-react';
 
 const SystemSettings: React.FC = () => {

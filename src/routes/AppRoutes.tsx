@@ -16,7 +16,34 @@ import Settings from '../dashboards/student/pages/Settings';
 
 // Lecturer Dashboard Pages
 import LecturerDashboard from '../dashboards/lecturers/pages/LecturerDashboard';
-// ...import other lecturer pages as needed...
+import LecturerCourses from '../dashboards/lecturers/pages/LecturerCourses';
+import LecturerStudents from '../dashboards/lecturers/pages/LecturerStudents';
+import LecturerAssignments from '../dashboards/lecturers/pages/LecturerAssignments';
+import LecturerAnalytics from '../dashboards/lecturers/pages/LecturerAnalytics';
+import LecturerSchedule from '../dashboards/lecturers/pages/LecturerSchedule';
+import LecturerMessages from '../dashboards/lecturers/pages/LecturerMessages';
+import LecturerSettings from '../dashboards/lecturers/pages/LecturerSettings';
+
+// HOD Dashboard Pages
+import HodDashboard from '../dashboards/head-of-departments/pages/HodDashboard';
+import HodFaculty from '../dashboards/head-of-departments/pages/HodFaculty';
+import HodCourses from '../dashboards/head-of-departments/pages/HodCourses';
+import HodReports from '../dashboards/head-of-departments/pages/HodReports';
+import HodAnalytics from '../dashboards/head-of-departments/pages/HodAnalytics';
+import HodSchedule from '../dashboards/head-of-departments/pages/HodSchedule';
+import HodMessages from '../dashboards/head-of-departments/pages/HodMessages';
+import HodSettings from '../dashboards/head-of-departments/pages/HodSettings';
+
+// Admin Dashboard Pages
+import AdminDashboard from '../dashboards/admins/pages/AdminDashboard';
+import UserManagement from '../dashboards/admins/pages/UserManagement';
+import CourseManagement from '../dashboards/admins/pages/CourseManagement';
+import HeadOfDepartment from '../dashboards/admins/pages/HeadOfDepartment';
+import Analytics from '../dashboards/admins/pages/Analytics';
+import Database from '../dashboards/admins/pages/Database';
+import Security from '../dashboards/admins/pages/Security';
+import NotificationSettings from '../dashboards/admins/pages/NotificationSettings';
+import SystemSettings from '../dashboards/admins/pages/SystemSettings';
 
 const AppRoutes = () => {
   const { user } = useAuth();
@@ -98,13 +125,130 @@ const AppRoutes = () => {
           <LecturerDashboard />
         </ProtectedRoute>
       } />
-      {/* Add more lecturer routes here if needed, e.g.:
-      <Route path="/lecturer/other" element={
+      <Route path="/lecturer/courses" element={
         <ProtectedRoute>
-          <OtherLecturerPage />
+          <LecturerCourses />
         </ProtectedRoute>
       } />
-      */}
+      <Route path="/lecturer/students" element={
+        <ProtectedRoute>
+          <LecturerStudents />
+        </ProtectedRoute>
+      } />
+      <Route path="/lecturer/assignments" element={
+        <ProtectedRoute>
+          <LecturerAssignments />
+        </ProtectedRoute>
+      } />
+      <Route path="/lecturer/analytics" element={
+        <ProtectedRoute>
+          <LecturerAnalytics />
+        </ProtectedRoute>
+      } />
+      <Route path="/lecturer/schedule" element={
+        <ProtectedRoute>
+          <LecturerSchedule />
+        </ProtectedRoute>
+      } />
+      <Route path="/lecturer/messages" element={
+        <ProtectedRoute>
+          <LecturerMessages />
+        </ProtectedRoute>
+      } />
+      <Route path="/lecturer/settings" element={
+        <ProtectedRoute>
+          <LecturerSettings />
+        </ProtectedRoute>
+      } />
+      
+      {/* HOD Dashboard Routes - Protected */}
+      <Route path="/head-of-departments" element={
+        <ProtectedRoute>
+          <HodDashboard />
+        </ProtectedRoute>
+      } />
+      <Route path="/hod/faculty" element={
+        <ProtectedRoute>
+          <HodFaculty />
+        </ProtectedRoute>
+      } />
+      <Route path="/hod/courses" element={
+        <ProtectedRoute>
+          <HodCourses />
+        </ProtectedRoute>
+      } />
+      <Route path="/hod/reports" element={
+        <ProtectedRoute>
+          <HodReports />
+        </ProtectedRoute>
+      } />
+      <Route path="/hod/analytics" element={
+        <ProtectedRoute>
+          <HodAnalytics />
+        </ProtectedRoute>
+      } />
+      <Route path="/hod/schedule" element={
+        <ProtectedRoute>
+          <HodSchedule />
+        </ProtectedRoute>
+      } />
+      <Route path="/hod/messages" element={
+        <ProtectedRoute>
+          <HodMessages />
+        </ProtectedRoute>
+      } />
+      <Route path="/hod/settings" element={
+        <ProtectedRoute>
+          <HodSettings />
+        </ProtectedRoute>
+      } />
+
+      {/* Admin Dashboard */}
+      <Route path="/admins" element={
+        <ProtectedRoute>
+          <AdminDashboard />
+        </ProtectedRoute>
+      } />
+      <Route path="/admin/users" element={
+        <ProtectedRoute>
+          <UserManagement />
+        </ProtectedRoute>
+      } />
+      <Route path="/admin/courses" element={
+        <ProtectedRoute>
+          <CourseManagement />
+        </ProtectedRoute>
+      } />
+      <Route path="/admin/hod" element={
+        <ProtectedRoute>
+          <HeadOfDepartment />
+        </ProtectedRoute>
+      } />
+      <Route path="/admin/analytics" element={
+        <ProtectedRoute>
+          <Analytics />
+        </ProtectedRoute>
+      } />
+      <Route path="/admin/database" element={
+        <ProtectedRoute>
+          <Database />
+        </ProtectedRoute>
+      } />
+      <Route path="/admin/security" element={
+        <ProtectedRoute>
+          <Security />
+        </ProtectedRoute>
+      } />
+      <Route path="/admin/notifications" element={
+        <ProtectedRoute>
+          <NotificationSettings />
+        </ProtectedRoute>
+      } />
+      <Route path="/admin/settings" element={
+        <ProtectedRoute>
+          <SystemSettings />
+        </ProtectedRoute>
+      } />
 
       {/* Landing page route */}
       <Route path="/" element={<LandingPage />} />

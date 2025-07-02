@@ -1,10 +1,10 @@
 
 import React, { useState } from 'react';
-import { AdminLayout } from '../../components/admin/AdminLayout';
-import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
-import { Button } from '../../components/ui/button';
-import { Input } from '../../components/ui/input';
-import { Badge } from '../../components/ui/badge';
+import { AdminLayout } from '../components/AdminLayout';
+import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
+import { Button } from '../../../components/ui/button';
+import { Input } from '../../../components/ui/input';
+import { Badge } from '../../../components/ui/badge';
 import { Search, BookOpen, Users, Calendar, MoreHorizontal } from 'lucide-react';
 
 const CourseManagement: React.FC = () => {
@@ -177,7 +177,7 @@ const CourseManagement: React.FC = () => {
                     <Badge variant={course.status === 'Active' ? 'default' : course.status === 'Draft' ? 'outline' : 'secondary'}>
                       {course.status}
                     </Badge>
-                    <Button variant="ghost" size="icon">
+                    <Button variant="ghost" size="sm">
                       <MoreHorizontal className="h-4 w-4" />
                     </Button>
                   </div>

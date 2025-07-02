@@ -1,10 +1,10 @@
 
 import React from 'react';
-import { AdminLayout } from '../components/admin/AdminLayout';
-import { AdminStats } from '../components/admin/AdminStats';
-import { UserManagement } from '../components/admin/UserManagement';
-import { SystemSettings } from '../components/admin/SystemSettings';
-import { RecentActivity } from '../components/admin/RecentActivity';
+import { AdminLayout } from '../components/AdminLayout';
+import { AdminStats } from '../components/AdminStats';
+import { UserManagement } from '../components/UserManagement';
+import { SystemSettings } from '../components/SystemSettings';
+import { RecentActivity } from '../components/RecentActivity';
 
 const AdminDashboard: React.FC = () => {
   return (

@@ -1,11 +1,11 @@
 
 import React, { useState } from 'react';
-import { AdminLayout } from '../../components/admin/AdminLayout';
-import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
-import { Button } from '../../components/ui/button';
-import { Input } from '../../components/ui/input';
-import { Badge } from '../../components/ui/badge';
-import { Search, UserPlus, MoreHorizontal, Edit, Trash2, Mail } from 'lucide-react';
+import { AdminLayout } from '../components/AdminLayout';
+import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
+import { Button } from '../../../components/ui/button';
+import { Input } from '../../../components/ui/input';
+import { Badge } from '../../../components/ui/badge';
+import { Search, UserPlus, Edit, Trash2, Mail } from 'lucide-react';
 
 const UserManagement: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -94,13 +94,13 @@ const UserManagement: React.FC = () => {
                       <td className="p-3 text-sm text-gray-500 dark:text-gray-400">{user.lastLogin}</td>
                       <td className="p-3">
                         <div className="flex items-center gap-2">
-                          <Button variant="ghost" size="icon">
+                          <Button variant="ghost" size="sm">
                             <Edit className="h-4 w-4" />
                           </Button>
-                          <Button variant="ghost" size="icon">
+                          <Button variant="ghost" size="sm">
                             <Mail className="h-4 w-4" />
                           </Button>
-                          <Button variant="ghost" size="icon">
+                          <Button variant="ghost" size="sm">
                             <Trash2 className="h-4 w-4 text-red-500" />
                           </Button>
                         </div>

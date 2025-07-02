@@ -21,7 +21,7 @@ interface HodSidebarProps {
 }
 
 const navigationItems = [
-  { icon: Home, label: 'Dashboard', path: '/hod' },
+  { icon: Home, label: 'Dashboard', path: '/head-of-departments' },
   { icon: Users, label: 'Faculty Management', path: '/hod/faculty' },
   { icon: Book, label: 'Course Oversight', path: '/hod/courses' },
   { icon: ClipboardList, label: 'Department Reports', path: '/hod/reports' },

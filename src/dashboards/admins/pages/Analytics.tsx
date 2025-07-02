@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { AdminLayout } from '../../components/admin/AdminLayout';
-import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
+import { AdminLayout } from '../components/AdminLayout';
+import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
 import { TrendingUp, Users, BookOpen, Clock } from 'lucide-react';
 
 const Analytics: React.FC = () => {

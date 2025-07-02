@@ -1,9 +1,9 @@
 
 import React from 'react';
-import { AdminLayout } from '../../components/admin/AdminLayout';
-import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
-import { Button } from '../../components/ui/button';
-import { Badge } from '../../components/ui/badge';
+import { AdminLayout } from '../components/AdminLayout';
+import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
+import { Button } from '../../../components/ui/button';
+import { Badge } from '../../../components/ui/badge';
 import { Database as DatabaseIcon, HardDrive, Download, Upload, RefreshCw } from 'lucide-react';
 
 const Database: React.FC = () => {
@@ -124,7 +124,7 @@ const Database: React.FC = () => {
                         {backup.status}
                       </Badge>
                       {backup.status === 'Completed' && (
-                        <Button variant="ghost" size="icon">
+                        <Button variant="ghost" size="sm">
                           <Download className="h-4 w-4" />
                         </Button>
                       )}

@@ -21,7 +21,7 @@ interface AdminSidebarProps {
 }
 
 const navigationItems = [
-  { icon: Home, label: 'Dashboard', path: '/admin' },
+  { icon: Home, label: 'Dashboard', path: '/admins' },
   { icon: Users, label: 'User Management', path: '/admin/users' },
   { icon: BookOpen, label: 'Course Management', path: '/admin/courses' },
   { icon: GraduationCap, label: 'Head of Department', path: '/admin/hod' },
