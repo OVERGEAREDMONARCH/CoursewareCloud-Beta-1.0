@@ -22,7 +22,7 @@ interface SidebarProps {
 const navigationItems = [
   { icon: Home, label: 'Dashboard', path: '/student' },
   { icon: Book, label: 'Courses', path: '/student/courses' },
-  { icon: Calendar, label: 'Calendar', path: '/student/calendar' },
+  { icon: Calendar, label: 'Calendar', path: '/student/courses' },
   { icon: MessageCircle, label: 'Messages', path: '/student/messages' },
   { icon: Bookmark, label: 'Bookmarks', path: '/student/bookmarks' },
   { icon: Bell, label: 'Notifications', path: '/student/notifications' },
@@ -73,7 +73,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
               <li key={item.path}>
                 <Link
                   to={item.path}
-                  className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${isActive ? 'bg-blue-600 text-white' : 'text-gray-300 hover:bg-slate-700'} group relative`}
+                  className={`sidebar-nav-item group relative ${isActive ? 'active' : ''}`}
                   title={collapsed && !hovering ? item.label : ''}
                 >
                   <Icon size={20} className="flex-shrink-0" />

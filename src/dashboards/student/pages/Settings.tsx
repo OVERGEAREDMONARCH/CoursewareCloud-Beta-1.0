@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../components/ui/card';
 import { Button } from '../../../components/ui/button';
@@ -73,10 +72,7 @@ const Settings = () => {
 
   const [hasChanges, setHasChanges] = useState(false);
 
-  const updateSetting = (
-    key: keyof SettingsState,
-    value: boolean | string
-  ) => {
+  const updateSetting = <K extends keyof SettingsState>(key: K, value: SettingsState[K]) => {
     setSettings(prev => ({ ...prev, [key]: value }));
     setHasChanges(true);
   };
@@ -88,24 +84,24 @@ const Settings = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Settings</h1>
-          <p className="text-gray-600 dark:text-gray-300 mt-2">
-            Manage your account preferences and privacy settings
-          </p>
+      <div className="space-y-4 sm:space-y-6 animate-fade-in">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 px-1">
+          <div>
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">Settings</h1>
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mt-1 sm:mt-2">
+              Manage your account preferences and privacy settings
+            </p>
+          </div>
+          {hasChanges && (
+            <Button onClick={handleSave} className="gap-2 w-full sm:w-auto">
+              <Save className="w-4 h-4" />
+              Save Changes
+            </Button>
+          )}
         </div>
-        {hasChanges && (
-          <Button onClick={handleSave} className="gap-2">
-            <Save className="w-4 h-4" />
-            Save Changes
-          </Button>
-        )}
-      </div>
 
-        <Tabs defaultValue="notifications" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4">
+        <Tabs defaultValue="notifications" className="space-y-4 sm:space-y-6">
+          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 h-auto p-1">
             <TabsTrigger value="notifications">Notifications</TabsTrigger>
             <TabsTrigger value="preferences">Preferences</TabsTrigger>
             <TabsTrigger value="privacy">Privacy</TabsTrigger>

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Calendar, AlertCircle, CheckCircle, Clock } from 'lucide-react';
+import { Button } from '../../../components/ui/button';
 
 interface Assignment {
   id: string;
@@ -20,24 +21,24 @@ export const AssignmentsList: React.FC<AssignmentsListProps> = ({ assignments })
   const getPriorityIcon = (priority: string) => {
     switch (priority) {
       case 'high':
-        return <AlertCircle size={16} className="text-red-500" />;
+        return <AlertCircle size={14} className="text-red-500" />;
       case 'medium':
-        return <Clock size={16} className="text-yellow-500" />;
+        return <Clock size={14} className="text-yellow-500" />;
       case 'low':
-        return <CheckCircle size={16} className="text-green-500" />;
+        return <CheckCircle size={14} className="text-green-500" />;
       default:
-        return <Clock size={16} className="text-gray-500" />;
+        return <Clock size={14} className="text-gray-500" />;
     }
   };
 
   const getPriorityClass = (priority: string) => {
     switch (priority) {
       case 'high':
-        return 'border-l-4 border-red-500';
+        return 'priority-high';
       case 'medium':
-        return 'border-l-4 border-yellow-500';
+        return 'priority-medium';
       case 'low':
-        return 'border-l-4 border-green-500';
+        return 'priority-low';
       default:
         return '';
     }
@@ -56,32 +57,32 @@ export const AssignmentsList: React.FC<AssignmentsListProps> = ({ assignments })
   };
 
   return (
-    <div className="space-y-4 bg-white dark:bg-gray-700 rounded-lg p-6 shadow-sm">
+    <div className="space-y-3 sm:space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Upcoming Assignments</h2>
-        <button className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium">View All</button>
+        <h2 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">Upcoming Assignments</h2>
+        <Button variant="outline" size="sm" className="text-xs sm:text-sm px-2 sm:px-3">View All</Button>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-2 sm:space-y-3">
         {assignments.map((assignment) => (
           <div 
             key={assignment.id} 
-            className={`bg-gray-50 dark:bg-gray-600 rounded-lg p-4 flex justify-between items-center shadow-sm ${getPriorityClass(assignment.priority)}`}
+            className={`assignment-item ${getPriorityClass(assignment.priority)} p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4`}
           >
-            <div className="flex items-center gap-3 flex-1">
+            <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
               {getPriorityIcon(assignment.priority)}
               <div className="flex-1 min-w-0">
-                <h3 className="font-medium text-gray-900 dark:text-white truncate">
+                <h3 className="font-medium text-sm sm:text-base text-gray-900 dark:text-white truncate">
                   {assignment.title}
                 </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">{assignment.course}</p>
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 truncate">{assignment.course}</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-4">
-              <div className="text-right">
-                <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-300">
-                  <Calendar size={14} />
+            <div className="flex items-center justify-between sm:justify-end gap-3 sm:gap-4">
+              <div className="text-left sm:text-right">
+                <div className="flex items-center gap-1 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+                  <Calendar size={12} className="sm:w-4 sm:h-4" />
                   <span>{assignment.dueDate}</span>
                 </div>
                 <p className={`text-xs ${
@@ -93,10 +94,10 @@ export const AssignmentsList: React.FC<AssignmentsListProps> = ({ assignments })
                 </p>
               </div>
 
-              <div className="flex gap-2">
-                <button className="px-3 py-1 text-sm text-blue-600 bg-blue-50 hover:bg-blue-100 rounded">View</button>
+              <div className="flex gap-1.5 sm:gap-2">
+                <Button size="sm" variant="outline" className="text-xs px-2 py-1 h-7 sm:h-8 sm:px-3">View</Button>
                 {assignment.status === 'pending' && (
-                  <button className="px-3 py-1 text-sm bg-blue-500 hover:bg-blue-600 text-white rounded">Submit</button>
+                  <Button size="sm" className="bg-blue-500 hover:bg-blue-600 text-xs px-2 py-1 h-7 sm:h-8 sm:px-3">Submit</Button>
                 )}
               </div>
             </div>

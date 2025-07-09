@@ -1,6 +1,5 @@
-
 import { useState } from 'react';
-import { Card, CardContent,  } from '../../../components/ui/card';
+import { Card, CardContent } from '../../../components/ui/card';
 import { Button } from '../../../components/ui/button';
 import { Input } from '../../../components/ui/input';
 import { Badge } from '../../../components/ui/badge';
@@ -83,93 +82,97 @@ const Bookmarks = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Bookmarks</h1>
-        <p className="text-gray-600 dark:text-gray-300 mt-2">
-          Your saved courses, assignments, and resources
-        </p>
-      </div>
+      <div className="space-y-4 sm:space-y-6 animate-fade-in">
+        <div className="px-1">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Bookmarks</h1>
+          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mt-1 sm:mt-2">
+            Your saved courses, assignments, and resources
+          </p>
+        </div>
 
-      {/* Search and Filter */}
-      <Card>
-        <CardContent className="p-6">
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-              <Input
-                placeholder="Search bookmarks..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10"
-              />
-            </div>
-            <div className="flex gap-2 flex-wrap">
-              {categories.map(category => (
-                <Button
-                  key={category}
-                  variant={selectedCategory === category ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setSelectedCategory(category)}
-                  className="capitalize"
-                >
-                  {category}
-                </Button>
-              ))}
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Bookmarks List */}
-      <div className="grid gap-4">
-        {filteredBookmarks.map(bookmark => (
-          <Card key={bookmark.id} className="hover:shadow-md transition-shadow cursor-pointer">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div className="flex items-start gap-4 flex-1">
-                  <div className="p-2 bg-gray-100 dark:bg-gray-700 rounded-lg">
-                    {getTypeIcon(bookmark.type)}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
-                      {bookmark.title}
-                    </h3>
-                    <div className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
-                      <Badge className={getTypeBadgeColor(bookmark.type)}>
-                        {bookmark.type}
-                      </Badge>
-                      <span>{bookmark.category}</span>
-                      <span>•</span>
-                      <span>Added {new Date(bookmark.dateAdded).toLocaleDateString()}</span>
-                    </div>
-                  </div>
-                </div>
-                <Button variant="outline" size="sm">
-                  Open
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
-      {filteredBookmarks.length === 0 && (
+        {/* Search and Filter */}
         <Card>
-          <CardContent className="p-12 text-center">
-            <Bookmark className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-              No bookmarks found
-            </h3>
-            <p className="text-gray-600 dark:text-gray-300">
-              {searchTerm || selectedCategory !== 'all' 
-                ? 'Try adjusting your search or filter criteria.' 
-                : 'Start bookmarking courses, assignments, and resources to see them here.'}
-            </p>
+          <CardContent className="p-3 sm:p-6">
+            <div className="flex flex-col space-y-4">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                <Input
+                  placeholder="Search bookmarks..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-10 h-12 text-base"
+                />
+              </div>
+              <div className="flex gap-2 flex-wrap justify-center sm:justify-start">
+                {categories.map(category => (
+                  <Button
+                    key={category}
+                    variant={selectedCategory === category ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setSelectedCategory(category)}
+                    className="capitalize h-10 px-4 text-sm font-medium"
+                  >
+                    {category}
+                  </Button>
+                ))}
+              </div>
+            </div>
           </CardContent>
         </Card>
-      )}
-    </div>
+
+        {/* Bookmarks List */}
+        <div className="grid gap-3 sm:gap-4">
+          {filteredBookmarks.map(bookmark => (
+            <Card key={bookmark.id} className="hover:shadow-md transition-shadow cursor-pointer">
+              <CardContent className="p-4 sm:p-6">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <div className="flex items-start gap-3 sm:gap-4 flex-1 min-w-0">
+                    <div className="p-2 bg-gray-100 dark:bg-gray-700 rounded-lg flex-shrink-0">
+                      {getTypeIcon(bookmark.type)}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-semibold text-gray-900 dark:text-white mb-2 text-sm sm:text-base leading-tight">
+                        {bookmark.title}
+                      </h3>
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+                        <Badge className={`${getTypeBadgeColor(bookmark.type)} w-fit text-xs`}>
+                          {bookmark.type}
+                        </Badge>
+                        <span className="truncate">{bookmark.category}</span>
+                        <span className="hidden sm:inline">•</span>
+                        <span className="text-xs">Added {new Date(bookmark.dateAdded).toLocaleDateString()}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="w-full sm:w-auto h-10 font-medium"
+                  >
+                    Open
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {filteredBookmarks.length === 0 && (
+          <Card>
+            <CardContent className="p-8 sm:p-12 text-center">
+              <Bookmark className="w-10 h-10 sm:w-12 sm:h-12 text-gray-400 mx-auto mb-3 sm:mb-4" />
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                No bookmarks found
+              </h3>
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                {searchTerm || selectedCategory !== 'all' 
+                  ? 'Try adjusting your search or filter criteria.' 
+                  : 'Start bookmarking courses, assignments, and resources to see them here.'}
+              </p>
+            </CardContent>
+          </Card>
+        )}
+      </div>
   );
 };
 

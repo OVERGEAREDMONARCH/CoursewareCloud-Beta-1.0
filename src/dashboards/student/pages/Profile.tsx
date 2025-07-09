@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../components/ui/card';
 import { Button } from '../../../components/ui/button';
@@ -71,247 +70,247 @@ const Profile = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Profile</h1>
-          <p className="text-gray-600 dark:text-gray-300 mt-2">
-            Manage your personal information and academic details
-          </p>
+      <div className="space-y-4 sm:space-y-6 animate-fade-in">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-1">
+          <div>
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Profile</h1>
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mt-1 sm:mt-2">
+              Manage your personal information and academic details
+            </p>
+          </div>
+          {!isEditing ? (
+            <Button onClick={() => setIsEditing(true)} className="gap-2 w-full sm:w-auto">
+              <Edit2 className="w-4 h-4" />
+              Edit Profile
+            </Button>
+          ) : (
+            <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+              <Button onClick={handleSave} className="gap-2 w-full sm:w-auto">
+                <Save className="w-4 h-4" />
+                Save
+              </Button>
+              <Button onClick={handleCancel} variant="outline" className="gap-2 w-full sm:w-auto">
+                <X className="w-4 h-4" />
+                Cancel
+              </Button>
+            </div>
+          )}
         </div>
-        {!isEditing ? (
-          <Button onClick={() => setIsEditing(true)} className="gap-2">
-            <Edit2 className="w-4 h-4" />
-            Edit Profile
-          </Button>
-        ) : (
-          <div className="flex gap-2">
-            <Button onClick={handleSave} className="gap-2">
-              <Save className="w-4 h-4" />
-              Save
-            </Button>
-            <Button onClick={handleCancel} variant="outline" className="gap-2">
-              <X className="w-4 h-4" />
-              Cancel
-            </Button>
-          </div>
-        )}
+
+        <Tabs defaultValue="personal" className="space-y-4 sm:space-y-6">
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 h-auto">
+            <TabsTrigger value="personal" className="text-xs sm:text-sm px-2 sm:px-3 py-2">Personal</TabsTrigger>
+            <TabsTrigger value="academic" className="text-xs sm:text-sm px-2 sm:px-3 py-2">Academic</TabsTrigger>
+            <TabsTrigger value="courses" className="text-xs sm:text-sm px-2 sm:px-3 py-2">Courses</TabsTrigger>
+            <TabsTrigger value="achievements" className="text-xs sm:text-sm px-2 sm:px-3 py-2">Awards</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="personal" className="space-y-4 sm:space-y-6">
+            <Card>
+              <CardHeader className="p-4 sm:p-6">
+                <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                  <User className="w-4 h-4 sm:w-5 sm:h-5" />
+                  Personal Information
+                </CardTitle>
+                <CardDescription className="text-sm">
+                  Your basic profile information and contact details
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4 p-4 sm:p-6 pt-0">
+                <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 mb-4 sm:mb-6">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-blue-500 rounded-full flex items-center justify-center text-white text-lg sm:text-2xl font-bold">
+                    {profile.firstName[0]}{profile.lastName[0]}
+                  </div>
+                  <div className="text-center sm:text-left">
+                    <h2 className="text-xl sm:text-2xl font-bold">{profile.firstName} {profile.lastName}</h2>
+                    <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mt-1">{profile.email}</p>
+                    <Badge variant="secondary" className="mt-2">{profile.major} • {profile.year}</Badge>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <Label htmlFor="firstName">First Name</Label>
+                    <Input
+                      id="firstName"
+                      value={isEditing ? editedProfile.firstName : profile.firstName}
+                      onChange={(e) => setEditedProfile({...editedProfile, firstName: e.target.value})}
+                      disabled={!isEditing}
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="lastName">Last Name</Label>
+                    <Input
+                      id="lastName"
+                      value={isEditing ? editedProfile.lastName : profile.lastName}
+                      onChange={(e) => setEditedProfile({...editedProfile, lastName: e.target.value})}
+                      disabled={!isEditing}
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="email">Email</Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      value={isEditing ? editedProfile.email : profile.email}
+                      onChange={(e) => setEditedProfile({...editedProfile, email: e.target.value})}
+                      disabled={!isEditing}
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="studentId">Student ID</Label>
+                    <Input
+                      id="studentId"
+                      value={profile.studentId}
+                      disabled
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <Label htmlFor="bio">Bio</Label>
+                  <Textarea
+                    id="bio"
+                    value={isEditing ? editedProfile.bio : profile.bio}
+                    onChange={(e) => setEditedProfile({...editedProfile, bio: e.target.value})}
+                    disabled={!isEditing}
+                    rows={4}
+                  />
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="academic" className="space-y-4 sm:space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+              <Card>
+                <CardHeader className="p-4 sm:p-6">
+                  <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                    <Book className="w-4 h-4 sm:w-5 sm:h-5" />
+                    Academic Details
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4 p-4 sm:p-6 pt-0">
+                  <div>
+                    <Label htmlFor="major">Major</Label>
+                    <Input
+                      id="major"
+                      value={isEditing ? editedProfile.major : profile.major}
+                      onChange={(e) => setEditedProfile({...editedProfile, major: e.target.value})}
+                      disabled={!isEditing}
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="year">Academic Year</Label>
+                    <Input
+                      id="year"
+                      value={isEditing ? editedProfile.year : profile.year}
+                      onChange={(e) => setEditedProfile({...editedProfile, year: e.target.value})}
+                      disabled={!isEditing}
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="gpa">Current GPA</Label>
+                    <Input
+                      id="gpa"
+                      value={calculateGPA()}
+                      disabled
+                    />
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader className="p-4 sm:p-6">
+                  <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                    <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
+                    Important Dates
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4 p-4 sm:p-6 pt-0">
+                  <div>
+                    <Label>Enrollment Date</Label>
+                    <Input
+                      value={new Date(profile.enrollmentDate).toLocaleDateString()}
+                      disabled
+                    />
+                  </div>
+                  <div>
+                    <Label>Expected Graduation</Label>
+                    <Input
+                      value={new Date(profile.expectedGraduation).toLocaleDateString()}
+                      disabled
+                    />
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="courses" className="space-y-4 sm:space-y-6">
+            <Card>
+              <CardHeader className="p-4 sm:p-6">
+                <CardTitle className="text-base sm:text-lg">Course History</CardTitle>
+                <CardDescription className="text-sm">
+                  Complete record of your completed courses and grades
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="p-4 sm:p-6 pt-0">
+                <div className="space-y-3 sm:space-y-4">
+                  {mockCourseHistory.map(course => (
+                    <div key={course.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-3 sm:p-4 border rounded-lg">
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-sm sm:text-base">{course.name}</h3>
+                        <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mt-1">
+                          {course.code} • {course.semester} • {course.credits} credits
+                        </p>
+                      </div>
+                      <Badge 
+                        className={`${
+                          course.grade.startsWith('A') ? 'bg-green-100 text-green-800' :
+                          course.grade.startsWith('B') ? 'bg-blue-100 text-blue-800' :
+                          'bg-yellow-100 text-yellow-800'
+                        } w-fit`}
+                      >
+                        {course.grade}
+                      </Badge>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="achievements" className="space-y-4 sm:space-y-6">
+            <Card>
+              <CardHeader className="p-4 sm:p-6">
+                <CardTitle className="text-base sm:text-lg">Achievements & Awards</CardTitle>
+                <CardDescription className="text-sm">
+                  Recognition and accomplishments during your academic journey
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="p-4 sm:p-6 pt-0">
+                <div className="space-y-3 sm:space-y-4">
+                  {mockAchievements.map(achievement => (
+                    <div key={achievement.id} className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 border rounded-lg">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span className="text-yellow-600 dark:text-yellow-400 text-lg sm:text-xl">🏆</span>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-sm sm:text-base">{achievement.title}</h3>
+                        <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mt-1">{achievement.description}</p>
+                        <p className="text-xs text-gray-500 mt-1">
+                          {new Date(achievement.date).toLocaleDateString()}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+        </Tabs>
       </div>
-
-      <Tabs defaultValue="personal" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="personal">Personal Info</TabsTrigger>
-          <TabsTrigger value="academic">Academic</TabsTrigger>
-          <TabsTrigger value="courses">Course History</TabsTrigger>
-          <TabsTrigger value="achievements">Achievements</TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="personal" className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <User className="w-5 h-5" />
-                Personal Information
-              </CardTitle>
-              <CardDescription>
-                Your basic profile information and contact details
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex items-center gap-6 mb-6">
-                <div className="w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center text-white text-2xl font-bold">
-                  {profile.firstName[0]}{profile.lastName[0]}
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold">{profile.firstName} {profile.lastName}</h2>
-                  <p className="text-gray-600 dark:text-gray-300">{profile.email}</p>
-                  <Badge variant="secondary">{profile.major} • {profile.year}</Badge>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="firstName">First Name</Label>
-                  <Input
-                    id="firstName"
-                    value={isEditing ? editedProfile.firstName : profile.firstName}
-                    onChange={(e) => setEditedProfile({...editedProfile, firstName: e.target.value})}
-                    disabled={!isEditing}
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="lastName">Last Name</Label>
-                  <Input
-                    id="lastName"
-                    value={isEditing ? editedProfile.lastName : profile.lastName}
-                    onChange={(e) => setEditedProfile({...editedProfile, lastName: e.target.value})}
-                    disabled={!isEditing}
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    value={isEditing ? editedProfile.email : profile.email}
-                    onChange={(e) => setEditedProfile({...editedProfile, email: e.target.value})}
-                    disabled={!isEditing}
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="studentId">Student ID</Label>
-                  <Input
-                    id="studentId"
-                    value={profile.studentId}
-                    disabled
-                  />
-                </div>
-              </div>
-
-              <div>
-                <Label htmlFor="bio">Bio</Label>
-                <Textarea
-                  id="bio"
-                  value={isEditing ? editedProfile.bio : profile.bio}
-                  onChange={(e) => setEditedProfile({...editedProfile, bio: e.target.value})}
-                  disabled={!isEditing}
-                  rows={4}
-                />
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="academic" className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Book className="w-5 h-5" />
-                  Academic Details
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <Label htmlFor="major">Major</Label>
-                  <Input
-                    id="major"
-                    value={isEditing ? editedProfile.major : profile.major}
-                    onChange={(e) => setEditedProfile({...editedProfile, major: e.target.value})}
-                    disabled={!isEditing}
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="year">Academic Year</Label>
-                  <Input
-                    id="year"
-                    value={isEditing ? editedProfile.year : profile.year}
-                    onChange={(e) => setEditedProfile({...editedProfile, year: e.target.value})}
-                    disabled={!isEditing}
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="gpa">Current GPA</Label>
-                  <Input
-                    id="gpa"
-                    value={calculateGPA()}
-                    disabled
-                  />
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Calendar className="w-5 h-5" />
-                  Important Dates
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <Label>Enrollment Date</Label>
-                  <Input
-                    value={new Date(profile.enrollmentDate).toLocaleDateString()}
-                    disabled
-                  />
-                </div>
-                <div>
-                  <Label>Expected Graduation</Label>
-                  <Input
-                    value={new Date(profile.expectedGraduation).toLocaleDateString()}
-                    disabled
-                  />
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </TabsContent>
-
-        <TabsContent value="courses" className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Course History</CardTitle>
-              <CardDescription>
-                Complete record of your completed courses and grades
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {mockCourseHistory.map(course => (
-                  <div key={course.id} className="flex items-center justify-between p-4 border rounded-lg">
-                    <div>
-                      <h3 className="font-semibold">{course.name}</h3>
-                      <p className="text-sm text-gray-600 dark:text-gray-300">
-                        {course.code} • {course.semester} • {course.credits} credits
-                      </p>
-                    </div>
-                    <Badge 
-                      className={`${
-                        course.grade.startsWith('A') ? 'bg-green-100 text-green-800' :
-                        course.grade.startsWith('B') ? 'bg-blue-100 text-blue-800' :
-                        'bg-yellow-100 text-yellow-800'
-                      }`}
-                    >
-                      {course.grade}
-                    </Badge>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="achievements" className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Achievements & Awards</CardTitle>
-              <CardDescription>
-                Recognition and accomplishments during your academic journey
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {mockAchievements.map(achievement => (
-                  <div key={achievement.id} className="flex items-center gap-4 p-4 border rounded-lg">
-                    <div className="w-12 h-12 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center">
-                      <span className="text-yellow-600 dark:text-yellow-400 text-xl">🏆</span>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold">{achievement.title}</h3>
-                      <p className="text-sm text-gray-600 dark:text-gray-300">{achievement.description}</p>
-                      <p className="text-xs text-gray-500">
-                        {new Date(achievement.date).toLocaleDateString()}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-      </Tabs>
-    </div>
   );
 };
 

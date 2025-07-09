@@ -35,7 +35,7 @@ export const CourseCard: React.FC<CourseCardProps> = ({
   };
 
   return (
-    <div className="bg-white dark:bg-gray-700 rounded-lg p-4 group cursor-pointer">
+    <div className="course-card group cursor-pointer">
       {/* Course Thumbnail */}
       <div className={`h-32 ${color} rounded-lg mb-4 flex items-center justify-center relative overflow-hidden`}>
         {thumbnail ? (

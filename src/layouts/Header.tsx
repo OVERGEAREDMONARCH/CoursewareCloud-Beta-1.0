@@ -1,12 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
 import { Bell, Search, Sun, Moon } from 'lucide-react';
-import { Button } from './../components/ui/button';
+import { Button } from '../components/ui/button';
 
 export const Header: React.FC = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [greeting, setGreeting] = useState('');
-  const [notificationCount] = useState(0);
+  const [notificationCount] = useState(3);
 
   useEffect(() => {
     const updateGreeting = () => {

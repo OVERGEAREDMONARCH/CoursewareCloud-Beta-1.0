@@ -87,7 +87,7 @@ const Calendar = () => {
 
     // Empty cells for days before the first day of the month
     for (let i = 0; i < firstDay; i++) {
-      days.push(<div key={`empty-${i}`} className="h-24"></div>);
+      days.push(<div key={`empty-${i}`} className="h-16 sm:h-20 lg:h-24"></div>);
     }
 
     // Days of the month
@@ -98,21 +98,22 @@ const Calendar = () => {
       days.push(
         <div
           key={day}
-          className={`h-24 p-2 border border-gray-200 dark:border-gray-600 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors ${
-            isToday ? 'bg-blue-50 dark:bg-blue-900/20 ring-2 ring-blue-500' : ''
+          className={`h-16 sm:h-20 lg:h-24 p-1 sm:p-2 border border-gray-200 dark:border-gray-600 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors ${
+            isToday ? 'bg-blue-50 dark:bg-blue-900/20 ring-1 sm:ring-2 ring-blue-500' : ''
           }`}
         >
-          <div className={`text-sm font-medium ${isToday ? 'text-blue-600 dark:text-blue-400' : 'text-gray-900 dark:text-white'}`}>
+          <div className={`text-xs sm:text-sm font-medium ${isToday ? 'text-blue-600 dark:text-blue-400' : 'text-gray-900 dark:text-white'}`}>
             {day}
           </div>
-          <div className="mt-1 space-y-1">
+          <div className="mt-0.5 sm:mt-1 space-y-0.5 sm:space-y-1">
             {dayEvents.map(event => (
               <div
                 key={event.id}
-                className={`${event.color} text-white text-xs px-2 py-1 rounded truncate`}
+                className={`${event.color} text-white text-xs px-1 sm:px-2 py-0.5 sm:py-1 rounded truncate`}
                 title={`${event.title} - ${event.time}`}
               >
-                {event.title}
+                <span className="hidden sm:inline">{event.title}</span>
+                <span className="sm:hidden">{event.title.substring(0, 8)}...</span>
               </div>
             ))}
           </div>
@@ -124,80 +125,96 @@ const Calendar = () => {
   };
 
   return (
-    <div className="space-y-6 animate-fade-in">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Calendar</h1>
-          <p className="text-gray-600 dark:text-gray-300">Manage your schedule and upcoming events</p>
+    <div className="space-y-4 sm:space-y-6 animate-fade-in">
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0">
+          <div>
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Calendar</h1>
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">Manage your schedule and upcoming events</p>
+          </div>
+          <Button className="bg-blue-500 hover:bg-blue-600 text-white text-sm sm:text-base px-3 sm:px-4 py-2">
+            <Plus size={16} className="mr-1 sm:mr-2" />
+            Add Event
+          </Button>
         </div>
-        <Button className="bg-blue-500 hover:bg-blue-600 text-white">
-          <Plus size={20} className="mr-2" />
-          Add Event
-        </Button>
-      </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-        {/* Calendar */}
-        <div className="lg:col-span-3">
-          <div className="bg-white dark:bg-gray-700 rounded-xl shadow-sm">
-            {/* Calendar Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-600">
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
-              </h2>
-              <div className="flex items-center gap-2">
-                <Button className="border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3" onClick={() => navigateMonth('prev')} asChild={false}>
-                  <ChevronLeft size={16} />
-                </Button>
-                <Button className="border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3" onClick={() => setCurrentDate(new Date())}>
-                  Today
-                </Button>
-                <Button className="border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3" onClick={() => navigateMonth('next')}>
-                  <ChevronRight size={16} />
-                </Button>
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6">
+          {/* Calendar */}
+          <div className="lg:col-span-3">
+            <div className="bg-white dark:bg-gray-700 rounded-xl shadow-sm">
+              {/* Calendar Header */}
+              <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200 dark:border-gray-600">
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">
+                  {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
+                </h2>
+                <div className="flex items-center gap-1 sm:gap-2">
+                  <Button variant="outline" size="sm" onClick={() => navigateMonth('prev')} className="h-8 w-8 sm:h-9 sm:w-9 p-0">
+                    <ChevronLeft size={14} className="sm:w-4 sm:h-4" />
+                  </Button>
+                  <Button variant="outline" size="sm" onClick={() => setCurrentDate(new Date())} className="text-xs sm:text-sm px-2 sm:px-3">
+                    Today
+                  </Button>
+                  <Button variant="outline" size="sm" onClick={() => navigateMonth('next')} className="h-8 w-8 sm:h-9 sm:w-9 p-0">
+                    <ChevronRight size={14} className="sm:w-4 sm:h-4" />
+                  </Button>
+                </div>
+              </div>
+
+              {/* Calendar Grid */}
+              <div className="p-3 sm:p-6">
+                {/* Days of Week Header */}
+                <div className="grid grid-cols-7 gap-0 mb-1 sm:mb-2">
+                  {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
+                    <div key={day} className="p-1 sm:p-2 text-center text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-300">
+                      {day}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Calendar Days */}
+                <div className="grid grid-cols-7 gap-0 border border-gray-200 dark:border-gray-600 rounded-lg overflow-hidden">
+                  {renderCalendarDays()}
+                </div>
               </div>
             </div>
+          </div>
 
-            {/* Calendar Grid */}
-            <div className="p-6">
-              {/* Days of Week Header */}
-              <div className="grid grid-cols-7 gap-0 mb-2">
-                {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-                  <div key={day} className="p-2 text-center text-sm font-medium text-gray-600 dark:text-gray-300">
-                    {day}
+          {/* Upcoming Events Sidebar */}
+          <div className="space-y-4 sm:space-y-6">
+            <div className="bg-white dark:bg-gray-700 rounded-xl p-4 sm:p-6 shadow-sm">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">Upcoming Events</h3>
+              <div className="space-y-2 sm:space-y-3">
+                {upcomingEvents.map((event, index) => (
+                  <div key={index} className={`p-2 sm:p-3 rounded-lg border ${event.color}`}>
+                    <h4 className="font-medium text-xs sm:text-sm">{event.title}</h4>
+                    <p className="text-xs opacity-75 mt-0.5 sm:mt-1 truncate">{event.course}</p>
+                    <div className="flex items-center justify-between text-xs mt-1 sm:mt-2">
+                      <span>{event.date}</span>
+                      <span>{event.time}</span>
+                    </div>
                   </div>
                 ))}
               </div>
+            </div>
 
-              {/* Calendar Days */}
-              <div className="grid grid-cols-7 gap-0 border border-gray-200 dark:border-gray-600 rounded-lg overflow-hidden">
-                {renderCalendarDays()}
+            {/* Quick Actions */}
+            <div className="bg-white dark:bg-gray-700 rounded-xl p-4 sm:p-6 shadow-sm">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">Quick Actions</h3>
+              <div className="space-y-1.5 sm:space-y-2">
+                <Button variant="outline" className="w-full justify-start text-xs sm:text-sm h-8 sm:h-9" size="sm">
+                  Schedule Study Time
+                </Button>
+                <Button variant="outline" className="w-full justify-start text-xs sm:text-sm h-8 sm:h-9" size="sm">
+                  Set Reminder
+                </Button>
+                <Button variant="outline" className="w-full justify-start text-xs sm:text-sm h-8 sm:h-9" size="sm">
+                  Export Calendar
+                </Button>
               </div>
             </div>
           </div>
         </div>
-
-        {/* Upcoming Events Sidebar */}
-        <div className="space-y-6">
-          <div className="bg-white dark:bg-gray-700 rounded-xl p-6 shadow-sm">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Upcoming Events</h3>
-            <div className="space-y-3">
-              {upcomingEvents.map((event, index) => (
-                <div key={index} className={`p-3 rounded-lg border ${event.color}`}>
-                  <h4 className="font-medium text-sm">{event.title}</h4>
-                  <p className="text-xs opacity-75 mt-1">{event.course}</p>
-                  <div className="flex items-center justify-between text-xs mt-2">
-                    <span>{event.date}</span>
-                    <span>{event.time}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
   );
 };
 
