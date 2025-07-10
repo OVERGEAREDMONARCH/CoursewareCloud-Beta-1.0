@@ -5,7 +5,6 @@ import { Badge } from '../../../components/ui/badge';
 import { Calendar, Clock, MapPin, Users, Plus, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const LecturerSchedule = () => {
-
   const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   
   const schedule = [

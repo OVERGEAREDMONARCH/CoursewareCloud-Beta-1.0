@@ -31,10 +31,10 @@ export const QuickActions: React.FC = () => {
   ];
 
   return (
-    <div className="bg-white dark:bg-gray-700 rounded-xl p-6 shadow-sm">
-      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Actions</h3>
+    <div className="bg-white dark:bg-gray-700 rounded-xl p-4 sm:p-6 shadow-sm">
+      <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">Quick Actions</h3>
       
-      <div className="space-y-3">
+      <div className="space-y-2 sm:space-y-3">
         {actions.map((action, index) => {
           const Icon = action.icon;
           return (
@@ -42,11 +42,11 @@ export const QuickActions: React.FC = () => {
               key={index}
               className={`w-full text-left p-3 ${action.color} text-white rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-md`}
             >
-              <div className="flex items-center gap-3">
-                <Icon size={20} />
+              <div className="flex items-center gap-2 sm:gap-3">
+                <Icon size={16} className="sm:w-5 sm:h-5" />
                 <div>
-                  <p className="font-medium">{action.title}</p>
-                  <p className="text-sm opacity-90">{action.description}</p>
+                  <p className="font-medium text-sm sm:text-base">{action.title}</p>
+                  <p className="text-xs sm:text-sm opacity-90">{action.description}</p>
                 </div>
               </div>
             </button>

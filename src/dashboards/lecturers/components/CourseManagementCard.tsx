@@ -34,28 +34,28 @@ export const CourseManagementCard: React.FC<CourseManagementCardProps> = ({
 
   return (
     <div className="course-card group">
-      <div className="flex items-start justify-between mb-4">
+      <div className="flex flex-col space-y-3 sm:space-y-4">
         <div className="flex-1">
-          <div className="flex items-center gap-3 mb-2">
+          <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
             <div className={`w-3 h-3 rounded-full ${color}`}></div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
               {title}
             </h3>
           </div>
           
-          <div className="grid grid-cols-2 gap-4 mb-4">
-            <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
-              <Users size={16} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mb-3 sm:mb-4">
+            <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+              <Users size={14} className="sm:w-4 sm:h-4" />
               <span>{students} students</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
-              <FileText size={16} />
+            <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+              <FileText size={14} className="sm:w-4 sm:h-4" />
               <span>{pendingAssignments} pending</span>
             </div>
           </div>
 
-          <div className="mb-4">
-            <div className="flex items-center justify-between text-sm mb-1">
+          <div className="mb-3 sm:mb-4">
+            <div className="flex items-center justify-between text-xs sm:text-sm mb-1">
               <span className="text-gray-600 dark:text-gray-300">Course Progress</span>
               <span className="font-medium text-gray-900 dark:text-white">{progress}%</span>
             </div>
@@ -67,20 +67,20 @@ export const CourseManagementCard: React.FC<CourseManagementCardProps> = ({
             </div>
           </div>
 
-          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 mb-4">
-            <Calendar size={16} />
-            <span>Next class: {formatNextClass(nextClass)}</span>
+          <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-3 sm:mb-4">
+            <Calendar size={14} className="sm:w-4 sm:h-4" />
+            <span className="truncate">Next class: {formatNextClass(nextClass)}</span>
           </div>
         </div>
-      </div>
 
-      <div className="flex gap-2">
-        <Button variant="outline" size="sm" className="flex-1">
-          View Course
-        </Button>
-        <Button size="sm" className="flex-1 bg-purple-500 hover:bg-purple-600">
-          Manage
-        </Button>
+        <div className="flex flex-col sm:flex-row gap-2">
+          <Button variant="outline" size="sm" className="flex-1 text-xs sm:text-sm">
+            View Course
+          </Button>
+          <Button size="sm" className="flex-1 bg-purple-500 hover:bg-purple-600 text-xs sm:text-sm">
+            Manage
+          </Button>
+        </div>
       </div>
     </div>
   );

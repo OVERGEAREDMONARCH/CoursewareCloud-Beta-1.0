@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui
 import { Button } from '../../../components/ui/button';
 import { Input } from '../../../components/ui/input';
 import { Badge } from '../../../components/ui/badge';
-import { Search, BookOpen, Users, Calendar, Plus, MoreHorizontal, Play, } from 'lucide-react';
+import { Search, BookOpen, Users, Calendar, Plus, MoreHorizontal, Play } from 'lucide-react';
 
 const LecturerCourses = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -67,118 +67,121 @@ const LecturerCourses = () => {
 
   return (
     <LecturerLayout>
-      <div className="space-y-6">
-        <div className="flex justify-between items-center">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">My Courses</h1>
-            <p className="text-gray-600 dark:text-gray-300 mt-2">Manage your courses and track student progress</p>
+      <div className="space-y-4 sm:space-y-6">
+        {/* Header Section */}
+        <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-start">
+          <div className="space-y-1">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">My Courses</h1>
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">Manage your courses and track student progress</p>
           </div>
-          <Button className="bg-purple-600 hover:bg-purple-700">
+          <Button className="bg-purple-600 hover:bg-purple-700 w-full sm:w-auto">
             <Plus className="h-4 w-4 mr-2" />
             Create New Course
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {/* Stats Cards */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
-                  <BookOpen className="h-6 w-6 text-white" />
+            <CardContent className="p-4 sm:p-6">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-500 rounded-lg flex items-center justify-center">
+                  <BookOpen className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white">4</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Total Courses</p>
+                  <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">4</p>
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Total Courses</p>
                 </div>
               </div>
             </CardContent>
           </Card>
           
           <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
-                  <Users className="h-6 w-6 text-white" />
+            <CardContent className="p-4 sm:p-6">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-500 rounded-lg flex items-center justify-center">
+                  <Users className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white">163</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Total Students</p>
+                  <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">163</p>
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Total Students</p>
                 </div>
               </div>
             </CardContent>
           </Card>
 
           <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center">
-                  <Play className="h-6 w-6 text-white" />
+            <CardContent className="p-4 sm:p-6">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-500 rounded-lg flex items-center justify-center">
+                  <Play className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white">3</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Active Courses</p>
+                  <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">3</p>
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Active Courses</p>
                 </div>
               </div>
             </CardContent>
           </Card>
 
           <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center">
-                  <Calendar className="h-6 w-6 text-white" />
+            <CardContent className="p-4 sm:p-6">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-500 rounded-lg flex items-center justify-center">
+                  <Calendar className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white">12</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Classes This Week</p>
+                  <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">12</p>
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Classes This Week</p>
                 </div>
               </div>
             </CardContent>
           </Card>
         </div>
 
+        {/* Course Management Card */}
         <Card>
           <CardHeader>
-            <div className="flex justify-between items-center">
-              <CardTitle>Course Management</CardTitle>
-              <div className="relative">
+            <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center">
+              <CardTitle className="text-lg sm:text-xl">Course Management</CardTitle>
+              <div className="relative w-full sm:w-auto">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
                 <Input
                   placeholder="Search courses..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 w-80"
+                  className="pl-10 w-full sm:w-80"
                 />
               </div>
             </div>
           </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <CardContent className="p-3 sm:p-6">
+            <div className="grid grid-cols-1 gap-4 sm:gap-6">
               {filteredCourses.map((course) => (
-                <div key={course.id} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h3 className="font-semibold text-lg text-gray-900 dark:text-white">{course.title}</h3>
+                <div key={course.id} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 sm:p-6">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4 mb-4">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-semibold text-base sm:text-lg text-gray-900 dark:text-white break-words">{course.title}</h3>
                       <p className="text-sm text-gray-500 dark:text-gray-400">{course.code} • {course.credits} Credits</p>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Badge variant={course.status === 'Active' ? 'default' : 'outline'}>
+                    <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+                      <Badge variant={course.status === 'Active' ? 'default' : 'outline'} className="text-xs">
                         {course.status}
                       </Badge>
-                      <Button variant="ghost" size="sm">
+                      <Button variant="ghost" size="sm" className="h-8 w-8">
                         <MoreHorizontal className="h-4 w-4" />
                       </Button>
                     </div>
                   </div>
                   
-                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">{course.description}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 break-words">{course.description}</p>
                   
-                  <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
                     <span className="flex items-center gap-1">
                       <Users size={16} />
                       {course.students} students
                     </span>
-                    <span>{course.semester}</span>
+                    <span className="text-left sm:text-right">{course.semester}</span>
                   </div>
                   
                   {course.status === 'Active' && (
@@ -196,9 +199,9 @@ const LecturerCourses = () => {
                     </div>
                   )}
                   
-                  <div className="flex gap-2">
-                    <Button size="sm" className="flex-1">View Details</Button>
-                    <Button size="sm" variant="outline">Manage</Button>
+                  <div className="flex flex-col sm:flex-row gap-2">
+                    <Button size="sm" className="flex-1 text-sm h-9">View Details</Button>
+                    <Button size="sm" variant="outline" className="flex-1 text-sm h-9">Manage</Button>
                   </div>
                 </div>
               ))}

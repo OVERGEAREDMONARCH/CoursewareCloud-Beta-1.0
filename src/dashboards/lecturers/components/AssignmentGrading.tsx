@@ -36,59 +36,61 @@ export const AssignmentGrading: React.FC<AssignmentGradingProps> = ({ assignment
   };
 
   return (
-    <div>
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Pending Grading</h2>
-        <Button variant="outline" size="sm">
+    <div className="w-full">
+      <div className="flex flex-col gap-2 mb-3 sm:mb-4 sm:flex-row sm:items-center sm:justify-between">
+        <h2 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">Pending Grading</h2>
+        <Button variant="outline" size="sm" className="w-full sm:w-auto">
           View All
         </Button>
       </div>
       
-      <div className="space-y-3">
+      <div className="space-y-3 sm:space-y-4">
         {assignments.map((assignment) => (
-          <div key={assignment.id} className="assignment-item group">
-            <div className="flex items-start justify-between w-full">
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-2">
+          <div key={assignment.id} className="bg-white dark:bg-gray-700 rounded-lg p-3 sm:p-4 shadow-sm hover:shadow-md transition-all duration-200 border border-gray-200 dark:border-gray-600">
+            <div className="space-y-3">
+              <div className="flex flex-col gap-2">
+                <div className="flex items-start gap-2">
                   {getPriorityIcon(assignment.priority)}
-                  <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
-                    {assignment.assignment}
-                  </h3>
-                  <Badge className={getPriorityColor(assignment.priority)}>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-sm sm:text-base text-gray-900 dark:text-white leading-tight break-words">
+                      {assignment.assignment}
+                    </h3>
+                  </div>
+                  <Badge className={`${getPriorityColor(assignment.priority)} text-xs shrink-0`}>
                     {assignment.priority}
                   </Badge>
                 </div>
                 
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 break-words pl-6">
                   {assignment.course}
                 </p>
-                
-                <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-300">
-                  <div className="flex items-center gap-1">
-                    <Users size={14} />
-                    <span>{assignment.submissions}/{assignment.totalStudents} submitted</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Clock size={14} />
-                    <span>Due {new Date(assignment.dueDate).toLocaleDateString()}</span>
-                  </div>
+              </div>
+              
+              <div className="flex flex-col gap-2 text-xs sm:text-sm text-gray-600 dark:text-gray-300 pl-6">
+                <div className="flex items-center gap-1">
+                  <Users size={12} className="shrink-0" />
+                  <span>{assignment.submissions}/{assignment.totalStudents} submitted</span>
                 </div>
+                <div className="flex items-center gap-1">
+                  <Clock size={12} className="shrink-0" />
+                  <span>Due {new Date(assignment.dueDate).toLocaleDateString()}</span>
+                </div>
+              </div>
 
-                <div className="mt-2">
-                  <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-1.5">
-                    <div 
-                      className="bg-purple-500 h-1.5 rounded-full transition-all duration-300"
-                      style={{ width: `${(assignment.submissions / assignment.totalStudents) * 100}%` }}
-                    ></div>
-                  </div>
+              <div className="pl-6">
+                <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+                  <div 
+                    className="bg-purple-500 h-2 rounded-full transition-all duration-300"
+                    style={{ width: `${(assignment.submissions / assignment.totalStudents) * 100}%` }}
+                  ></div>
                 </div>
               </div>
               
-              <div className="flex gap-2 ml-4">
-                <Button variant="outline" size="sm">
+              <div className="flex gap-2 pt-1">
+                <Button variant="outline" size="sm" className="flex-1 text-xs sm:text-sm h-8 sm:h-9">
                   Review
                 </Button>
-                <Button size="sm" className="bg-purple-500 hover:bg-purple-600">
+                <Button size="sm" className="bg-purple-500 hover:bg-purple-600 flex-1 text-xs sm:text-sm h-8 sm:h-9">
                   Grade
                 </Button>
               </div>

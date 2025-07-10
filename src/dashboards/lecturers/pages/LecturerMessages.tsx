@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { LecturerLayout } from '../components/LecturerLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
@@ -7,7 +6,8 @@ import { Input } from '../../../components/ui/input';
 import { Badge } from '../../../components/ui/badge';
 import { Search, MessageCircle, Send, Plus, Filter, Star, Archive } from 'lucide-react';
 
-type Message = {
+// Define a type for messages
+interface Message {
   id: string;
   from: string;
   subject: string;
@@ -17,14 +17,14 @@ type Message = {
   starred: boolean;
   course: string;
   priority: string;
-};
+}
 
 const LecturerMessages = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedMessage, setSelectedMessage] = useState<Message | null>(null);
   const [filter, setFilter] = useState('all');
 
-  const messages: Message[] = [
+  const messages = [
     {
       id: '1',
       from: 'Alice Johnson',
