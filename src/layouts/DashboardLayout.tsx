@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { RadioSidebar } from '../components/ui/radio-sidebar';
 import { ThemeToggle } from '../components/ui/theme-toggle';
@@ -97,9 +98,11 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
       </div>
 
       <div className="flex-1 flex flex-col min-w-0">
-        <header className="flex h-12 sm:h-14 md:h-16 shrink-0 items-center justify-between gap-2 border-b px-2 sm:px-3 md:px-4 bg-white dark:bg-gray-800">
-          <h1 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold truncate ml-12 md:ml-0">Student Dashboard</h1>
-          <ThemeToggle />
+        <header className="flex h-12 sm:h-14 md:h-16 shrink-0 items-center justify-between gap-2 border-b px-2 sm:px-3 md:px-4 bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 dark:from-blue-900 dark:via-blue-800 dark:to-cyan-800 shadow-lg backdrop-blur-sm rounded-b-3xl border-0 border-blue-400/20 dark:border-blue-700/30">
+          <h1 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold truncate ml-12 md:ml-0 text-white drop-shadow-md tracking-wide">Student Dashboard</h1>
+          <div className="bg-white/10 dark:bg-black/20 backdrop-blur-sm rounded-2xl p-1 shadow-inner">
+            <ThemeToggle />
+          </div>
         </header>
         <main className="flex flex-1 flex-col gap-2 sm:gap-3 md:gap-4 p-2 sm:p-3 md:p-4 overflow-auto">
           {children}

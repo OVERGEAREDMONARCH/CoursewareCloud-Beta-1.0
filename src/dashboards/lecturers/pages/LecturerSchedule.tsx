@@ -5,6 +5,7 @@ import { Badge } from '../../../components/ui/badge';
 import { Calendar, Clock, MapPin, Users, Plus, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const LecturerSchedule = () => {
+
   const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   
   const schedule = [
@@ -112,13 +113,13 @@ const LecturerSchedule = () => {
 
   return (
     <LecturerLayout>
-      <div className="space-y-6">
-        <div className="flex justify-between items-center">
+      <div className="space-y-4 sm:space-y-6 p-2 sm:p-0">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 sm:gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Schedule</h1>
-            <p className="text-gray-600 dark:text-gray-300 mt-2">Manage your teaching schedule and appointments</p>
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Schedule</h1>
+            <p className="text-gray-600 dark:text-gray-300 mt-1 sm:mt-2 text-sm sm:text-base">Manage your teaching schedule and appointments</p>
           </div>
-          <Button className="bg-purple-600 hover:bg-purple-700">
+          <Button className="bg-purple-600 hover:bg-purple-700 w-full sm:w-auto">
             <Plus className="h-4 w-4 mr-2" />
             Add Event
           </Button>
@@ -126,17 +127,17 @@ const LecturerSchedule = () => {
 
         {/* Week Navigation */}
         <Card>
-          <CardHeader>
-            <div className="flex items-center justify-between">
-              <CardTitle className="flex items-center gap-2">
-                <Calendar className="h-5 w-5" />
+          <CardHeader className="pb-3">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
+              <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+                <Calendar className="h-4 w-4 sm:h-5 sm:w-5" />
                 Weekly Schedule
               </CardTitle>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center justify-center gap-2">
                 <Button variant="outline" size="sm">
                   <ChevronLeft className="h-4 w-4" />
                 </Button>
-                <span className="text-sm font-medium px-4">This Week</span>
+                <span className="text-sm font-medium px-3 sm:px-4 whitespace-nowrap">This Week</span>
                 <Button variant="outline" size="sm">
                   <ChevronRight className="h-4 w-4" />
                 </Button>
@@ -145,11 +146,11 @@ const LecturerSchedule = () => {
           </CardHeader>
         </Card>
 
-        {/* Weekly Schedule Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-7 gap-4">
+        {/* Weekly Schedule Grid - Mobile: Single column, Desktop: 7 columns */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-7 gap-3 sm:gap-4">
           {weekDays.map((day, index) => (
-            <Card key={day} className="min-h-[400px]">
-              <CardHeader className="pb-3">
+            <Card key={day} className="min-h-[200px] sm:min-h-[300px] lg:min-h-[400px]">
+              <CardHeader className="pb-2 sm:pb-3">
                 <CardTitle className="text-sm font-medium text-center">
                   {day}
                   <br />
@@ -163,17 +164,17 @@ const LecturerSchedule = () => {
                   {getClassesForDay(day).map((item) => (
                     <div
                       key={item.id}
-                      className={`p-3 rounded-lg text-white text-xs ${item.color} hover:opacity-90 transition-opacity cursor-pointer`}
+                      className={`p-2 sm:p-3 rounded-lg text-white text-xs ${item.color} hover:opacity-90 transition-opacity cursor-pointer`}
                     >
-                      <div className="font-medium mb-1">{item.course}</div>
+                      <div className="font-medium mb-1 text-xs sm:text-sm truncate">{item.course}</div>
                       <div className="text-xs opacity-90 mb-1">{item.type}</div>
-                      <div className="flex items-center gap-1 text-xs opacity-90">
+                      <div className="flex items-center gap-1 text-xs opacity-90 mb-1">
                         <Clock size={10} />
-                        {item.time}
+                        <span className="truncate">{item.time}</span>
                       </div>
-                      <div className="flex items-center gap-1 text-xs opacity-90">
+                      <div className="flex items-center gap-1 text-xs opacity-90 mb-1">
                         <MapPin size={10} />
-                        {item.location}
+                        <span className="truncate">{item.location}</span>
                       </div>
                       <div className="flex items-center gap-1 text-xs opacity-90">
                         <Users size={10} />
@@ -187,34 +188,34 @@ const LecturerSchedule = () => {
           ))}
         </div>
 
-        {/* Upcoming Events */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Upcoming Events and Summary - Mobile: Single column, Desktop: Two columns */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           <Card>
             <CardHeader>
-              <CardTitle>Upcoming Events</CardTitle>
+              <CardTitle className="text-lg sm:text-xl">Upcoming Events</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {upcomingEvents.map((event) => (
-                  <div key={event.id} className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                    <div>
-                      <h4 className="font-medium text-gray-900 dark:text-white">{event.title}</h4>
-                      <div className="flex items-center gap-4 mt-1 text-sm text-gray-500 dark:text-gray-400">
+                  <div key={event.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-3 sm:p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-medium text-gray-900 dark:text-white text-sm sm:text-base truncate">{event.title}</h4>
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 mt-1 text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                         <span className="flex items-center gap-1">
-                          <Calendar size={14} />
+                          <Calendar size={12} />
                           {new Date(event.date).toLocaleDateString()}
                         </span>
                         <span className="flex items-center gap-1">
-                          <Clock size={14} />
+                          <Clock size={12} />
                           {event.time}
                         </span>
-                        <span className="flex items-center gap-1">
-                          <MapPin size={14} />
+                        <span className="flex items-center gap-1 truncate">
+                          <MapPin size={12} />
                           {event.location}
                         </span>
                       </div>
                     </div>
-                    <Badge className={getEventTypeColor(event.type)}>
+                    <Badge className={`${getEventTypeColor(event.type)} text-xs whitespace-nowrap mt-2 sm:mt-0`}>
                       {event.type}
                     </Badge>
                   </div>
@@ -225,31 +226,31 @@ const LecturerSchedule = () => {
 
           <Card>
             <CardHeader>
-              <CardTitle>Today's Summary</CardTitle>
+              <CardTitle className="text-lg sm:text-xl">Today's Summary</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <div className="text-center p-6 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg text-white">
-                  <h3 className="text-2xl font-bold">3</h3>
+                <div className="text-center p-4 sm:p-6 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg text-white">
+                  <h3 className="text-xl sm:text-2xl font-bold">3</h3>
                   <p className="text-sm opacity-90">Classes Today</p>
                 </div>
                 
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                    <div className="text-xl font-bold text-gray-900 dark:text-white">127</div>
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                  <div className="text-center p-3 sm:p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                    <div className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">127</div>
                     <div className="text-xs text-gray-500 dark:text-gray-400">Total Students</div>
                   </div>
-                  <div className="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                    <div className="text-xl font-bold text-gray-900 dark:text-white">4.5h</div>
+                  <div className="text-center p-3 sm:p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                    <div className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">4.5h</div>
                     <div className="text-xs text-gray-500 dark:text-gray-400">Teaching Hours</div>
                   </div>
                 </div>
 
                 <div className="space-y-3">
-                  <h4 className="font-medium text-gray-900 dark:text-white">Next Class</h4>
+                  <h4 className="font-medium text-gray-900 dark:text-white text-sm sm:text-base">Next Class</h4>
                   <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-l-4 border-l-blue-500">
-                    <div className="font-medium text-gray-900 dark:text-white">Advanced React Development</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300">10:00 - 11:30 • Room A-101</div>
+                    <div className="font-medium text-gray-900 dark:text-white text-sm sm:text-base">Advanced React Development</div>
+                    <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">10:00 - 11:30 • Room A-101</div>
                     <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">45 students</div>
                   </div>
                 </div>

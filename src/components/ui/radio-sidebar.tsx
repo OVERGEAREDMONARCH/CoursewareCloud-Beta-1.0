@@ -1,7 +1,7 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 
 interface RadioSidebarItem {
   id: string;
@@ -17,6 +17,17 @@ export const RadioSidebar: React.FC<RadioSidebarProps> = ({ items }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+
+  // Auto-hide sidebar after opening on mobile
+  useEffect(() => {
+    if (isOpen) {
+      const timer = setTimeout(() => {
+        setIsOpen(false);
+      }, 5000); // Auto-hide after 5 seconds
+
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
 
   const handleNavigation = (path: string) => {
     navigate(path);
@@ -53,16 +64,6 @@ export const RadioSidebar: React.FC<RadioSidebarProps> = ({ items }) => {
         ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
         ${isOpen ? 'w-64' : 'w-16 sm:w-20 md:w-16 lg:w-20'}
       `}>
-        {/* Close button inside sidebar for mobile - positioned better */}
-        {isOpen && (
-          <button
-            onClick={() => setIsOpen(false)}
-            className="md:hidden absolute top-3 right-3 z-41 p-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700"
-          >
-            <X className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-          </button>
-        )}
-        
         <div className={`flex flex-col justify-start items-center pt-4 md:pt-8 lg:pt-12 transition-all duration-[450ms] ease-in-out h-full p-2 sm:p-3 md:p-2 lg:p-4 ${
           isOpen ? 'w-full' : 'w-16 sm:w-20 md:w-16 lg:w-20'
         }`}>

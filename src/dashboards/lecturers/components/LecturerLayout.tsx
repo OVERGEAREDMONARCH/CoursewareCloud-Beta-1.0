@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { RadioSidebar } from '../../../components/ui/radio-sidebar';
 import { ThemeToggle } from '../../../components/ui/theme-toggle';
@@ -99,9 +98,11 @@ export const LecturerLayout: React.FC<LecturerLayoutProps> = ({ children }) => {
       </div>
 
       <div className="flex-1 flex flex-col min-w-0">
-        <header className="flex h-12 sm:h-14 md:h-16 shrink-0 items-center justify-between gap-2 border-b px-3 sm:px-4 bg-white dark:bg-gray-800">
-          <h1 className="text-base sm:text-lg md:text-xl font-semibold truncate ml-12 md:ml-0">Lecturer Dashboard</h1>
-          <ThemeToggle />
+        <header className="flex h-12 sm:h-14 md:h-16 shrink-0 items-center justify-between gap-2 border-b px-3 sm:px-4 bg-gradient-to-r from-purple-600 via-purple-500 to-pink-500 dark:from-purple-900 dark:via-purple-800 dark:to-pink-800 shadow-lg backdrop-blur-sm rounded-b-3xl border-0 border-purple-400/20 dark:border-purple-700/30">
+          <h1 className="text-base sm:text-lg md:text-xl font-bold truncate ml-12 md:ml-0 text-white drop-shadow-md tracking-wide">Lecturer Dashboard</h1>
+          <div className="bg-white/10 dark:bg-black/20 backdrop-blur-sm rounded-2xl p-1 shadow-inner">
+            <ThemeToggle />
+          </div>
         </header>
         <main className="flex flex-1 flex-col gap-3 sm:gap-4 p-3 sm:p-4 overflow-auto">
           {children}

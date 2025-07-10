@@ -101,93 +101,96 @@ const LecturerMessages = () => {
 
   return (
     <LecturerLayout>
-      <div className="space-y-6">
-        <div className="flex justify-between items-center">
+      <div className="space-y-4 sm:space-y-6 p-2 sm:p-0">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 sm:gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Messages</h1>
-            <p className="text-gray-600 dark:text-gray-300 mt-2">Communicate with students and colleagues</p>
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Messages</h1>
+            <p className="text-gray-600 dark:text-gray-300 mt-1 sm:mt-2 text-sm sm:text-base">Communicate with students and colleagues</p>
           </div>
-          <Button className="bg-purple-600 hover:bg-purple-700">
+          <Button className="bg-purple-600 hover:bg-purple-700 w-full sm:w-auto">
             <Plus className="h-4 w-4 mr-2" />
             Compose
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {/* Stats Cards - Mobile: 2x2 grid, Desktop: 1x4 grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
           <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
-                  <MessageCircle className="h-6 w-6 text-white" />
+            <CardContent className="p-4 sm:p-6">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-500 rounded-lg flex items-center justify-center">
+                  <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white">24</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Total Messages</p>
+                  <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">24</p>
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Total Messages</p>
                 </div>
               </div>
             </CardContent>
           </Card>
           
           <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-red-500 rounded-lg flex items-center justify-center">
-                  <MessageCircle className="h-6 w-6 text-white" />
+            <CardContent className="p-4 sm:p-6">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-red-500 rounded-lg flex items-center justify-center">
+                  <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white">5</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Unread</p>
+                  <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">5</p>
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Unread</p>
                 </div>
               </div>
             </CardContent>
           </Card>
 
           <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center">
-                  <Star className="h-6 w-6 text-white" />
+            <CardContent className="p-4 sm:p-6">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-yellow-500 rounded-lg flex items-center justify-center">
+                  <Star className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white">3</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Starred</p>
+                  <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">3</p>
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Starred</p>
                 </div>
               </div>
             </CardContent>
           </Card>
 
           <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center">
-                  <Send className="h-6 w-6 text-white" />
+            <CardContent className="p-4 sm:p-6">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-500 rounded-lg flex items-center justify-center">
+                  <Send className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white">12</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Sent Today</p>
+                  <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">12</p>
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Sent Today</p>
                 </div>
               </div>
             </CardContent>
           </Card>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Messages Layout - Mobile: Single column stack, Desktop: Side by side */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
           {/* Messages List */}
-          <div className="lg:col-span-1">
-            <Card className="h-[600px]">
+          <div className="lg:col-span-1 order-1">
+            <Card className="h-auto lg:h-[600px]">
               <CardHeader>
-                <div className="flex flex-col gap-4">
-                  <CardTitle className="flex items-center justify-between">
+                <div className="flex flex-col gap-3 sm:gap-4">
+                  <CardTitle className="flex items-center justify-between text-lg sm:text-xl">
                     <span>Inbox</span>
                     <Filter className="h-4 w-4" />
                   </CardTitle>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 overflow-x-auto">
                     {['all', 'unread', 'starred'].map((filterType) => (
                       <Button
                         key={filterType}
                         size="sm"
                         variant={filter === filterType ? 'default' : 'outline'}
                         onClick={() => setFilter(filterType)}
+                        className="whitespace-nowrap text-xs sm:text-sm"
                       >
                         {filterType.charAt(0).toUpperCase() + filterType.slice(1)}
                       </Button>
@@ -199,12 +202,12 @@ const LecturerMessages = () => {
                       placeholder="Search messages..."
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="pl-10"
+                      className="pl-10 text-sm"
                     />
                   </div>
                 </div>
               </CardHeader>
-              <CardContent className="pt-0 h-[450px] overflow-y-auto">
+              <CardContent className="pt-0 max-h-[400px] lg:h-[450px] overflow-y-auto">
                 <div className="space-y-2">
                   {filteredMessages.map((message) => (
                     <div
@@ -215,20 +218,20 @@ const LecturerMessages = () => {
                       onClick={() => setSelectedMessage(message)}
                     >
                       <div className="flex items-start justify-between mb-1">
-                        <div className="flex items-center gap-2">
-                          <span className={`font-medium text-sm ${!message.read ? 'text-gray-900 dark:text-white' : 'text-gray-700 dark:text-gray-300'}`}>
+                        <div className="flex items-center gap-2 min-w-0 flex-1">
+                          <span className={`font-medium text-sm truncate ${!message.read ? 'text-gray-900 dark:text-white' : 'text-gray-700 dark:text-gray-300'}`}>
                             {message.from}
                           </span>
-                          {message.starred && <Star className="w-3 h-3 text-yellow-500 fill-current" />}
+                          {message.starred && <Star className="w-3 h-3 text-yellow-500 fill-current flex-shrink-0" />}
                         </div>
-                        <span className="text-xs text-gray-500">{formatTime(message.timestamp)}</span>
+                        <span className="text-xs text-gray-500 flex-shrink-0 ml-2">{formatTime(message.timestamp)}</span>
                       </div>
-                      <h4 className={`text-sm mb-1 ${!message.read ? 'font-semibold text-gray-900 dark:text-white' : 'text-gray-700 dark:text-gray-300'}`}>
+                      <h4 className={`text-sm mb-1 truncate ${!message.read ? 'font-semibold text-gray-900 dark:text-white' : 'text-gray-700 dark:text-gray-300'}`}>
                         {message.subject}
                       </h4>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 truncate">{message.preview}</p>
-                      <div className="flex items-center justify-between mt-2">
-                        <Badge variant="outline" className="text-xs">
+                      <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2">{message.preview}</p>
+                      <div className="flex items-center justify-between mt-2 gap-2">
+                        <Badge variant="outline" className="text-xs truncate">
                           {message.course}
                         </Badge>
                         <Badge className={`text-xs ${getPriorityColor(message.priority)}`}>
@@ -243,25 +246,25 @@ const LecturerMessages = () => {
           </div>
 
           {/* Message View */}
-          <div className="lg:col-span-2">
-            <Card className="h-[600px]">
+          <div className="lg:col-span-2 order-2">
+            <Card className="h-auto lg:h-[600px]">
               {selectedMessage ? (
                 <>
                   <CardHeader>
-                    <div className="flex items-start justify-between">
-                      <div>
-                        <CardTitle className="text-lg">{selectedMessage.subject}</CardTitle>
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4">
+                      <div className="min-w-0 flex-1">
+                        <CardTitle className="text-lg truncate">{selectedMessage.subject}</CardTitle>
                         <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
                           From: {selectedMessage.from} • {formatTime(selectedMessage.timestamp)}
                         </p>
                         <div className="flex items-center gap-2 mt-2">
-                          <Badge variant="outline">{selectedMessage.course}</Badge>
-                          <Badge className={getPriorityColor(selectedMessage.priority)}>
+                          <Badge variant="outline" className="text-xs">{selectedMessage.course}</Badge>
+                          <Badge className={`text-xs ${getPriorityColor(selectedMessage.priority)}`}>
                             {selectedMessage.priority}
                           </Badge>
                         </div>
                       </div>
-                      <div className="flex gap-2">
+                      <div className="flex gap-2 flex-shrink-0">
                         <Button size="sm" variant="outline">
                           <Star className="h-4 w-4" />
                         </Button>
@@ -271,8 +274,8 @@ const LecturerMessages = () => {
                       </div>
                     </div>
                   </CardHeader>
-                  <CardContent className="flex-1 overflow-y-auto">
-                    <div className="prose max-w-none">
+                  <CardContent className="flex-1 overflow-y-auto max-h-[300px] lg:max-h-none">
+                    <div className="prose max-w-none text-sm sm:text-base">
                       <p className="text-gray-700 dark:text-gray-300">
                         {selectedMessage.preview}
                       </p>
@@ -286,18 +289,18 @@ const LecturerMessages = () => {
                       </p>
                     </div>
                   </CardContent>
-                  <div className="p-6 border-t border-gray-200 dark:border-gray-700">
-                    <div className="flex gap-2">
-                      <Button className="bg-purple-600 hover:bg-purple-700">
+                  <div className="p-4 sm:p-6 border-t border-gray-200 dark:border-gray-700">
+                    <div className="flex flex-col sm:flex-row gap-2">
+                      <Button className="bg-purple-600 hover:bg-purple-700 w-full sm:w-auto">
                         <Send className="h-4 w-4 mr-2" />
                         Reply
                       </Button>
-                      <Button variant="outline">Forward</Button>
+                      <Button variant="outline" className="w-full sm:w-auto">Forward</Button>
                     </div>
                   </div>
                 </>
               ) : (
-                <CardContent className="flex items-center justify-center h-full">
+                <CardContent className="flex items-center justify-center h-full min-h-[300px]">
                   <div className="text-center text-gray-500 dark:text-gray-400">
                     <MessageCircle className="h-12 w-12 mx-auto mb-4 opacity-50" />
                     <p>Select a message to view</p>
