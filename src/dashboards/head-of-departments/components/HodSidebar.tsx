@@ -22,13 +22,13 @@ interface HodSidebarProps {
 
 const navigationItems = [
   { icon: Home, label: 'Dashboard', path: '/head-of-departments' },
-  { icon: Users, label: 'Faculty Management', path: '/hod/faculty' },
-  { icon: Book, label: 'Course Oversight', path: '/hod/courses' },
-  { icon: ClipboardList, label: 'Department Reports', path: '/hod/reports' },
-  { icon: BarChart3, label: 'Analytics', path: '/hod/analytics' },
-  { icon: Calendar, label: 'Schedule', path: '/hod/schedule' },
-  { icon: MessageCircle, label: 'Messages', path: '/hod/messages' },
-  { icon: Settings, label: 'Settings', path: '/hod/settings' },
+  { icon: Users, label: 'Faculty Management', path: '/head-of-departments/faculty' },
+  { icon: Book, label: 'Course Oversight', path: '/head-of-departments/courses' },
+  { icon: ClipboardList, label: 'Department Reports', path: '/head-of-departments/reports' },
+  { icon: BarChart3, label: 'Analytics', path: '/head-of-departments/analytics' },
+  { icon: Calendar, label: 'Schedule', path: '/head-of-departments/schedule' },
+  { icon: MessageCircle, label: 'Messages', path: '/head-of-departments/messages' },
+  { icon: Settings, label: 'Settings', path: '/head-of-departments/settings' },
 ];
 
 export const HodSidebar: React.FC<HodSidebarProps> = ({ collapsed, onToggle }) => {
