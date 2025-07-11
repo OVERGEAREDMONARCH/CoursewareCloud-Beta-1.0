@@ -156,7 +156,7 @@ const LandingPage = () => {
               <Link to="/login" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition flex items-center">
                 <RiLoginBoxLine className="mr-2" /> Login
               </Link>
-              <Link to="/login" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition flex items-center justify-center">
+              <Link to="/login?mode=signup" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition flex items-center justify-center">
                 <RiUserAddLine className="mr-2" /> Sign Up
               </Link>
               
@@ -201,7 +201,7 @@ const LandingPage = () => {
             <Link to="/login" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition flex items-center">
               <RiLoginBoxLine className="mr-2" /> Login
             </Link>
-            <Link to="/login" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition flex items-center justify-center">
+            <Link to="/login?mode=signup" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition flex items-center justify-center">
               <RiUserAddLine className="mr-2" /> Sign Up
             </Link>
             
@@ -238,7 +238,7 @@ const LandingPage = () => {
               <Link to="/login" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg text-center font-medium transition flex items-center justify-center">
                 <RiLoginBoxLine className="mr-2" /> Login
               </Link>
-              <Link to="/login" className="bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 px-6 py-3 rounded-lg text-center font-medium transition flex items-center justify-center">
+              <Link to="/login?mode=signup" className="bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 px-6 py-3 rounded-lg text-center font-medium transition flex items-center justify-center">
                 <RiUserAddLine className="mr-2" /> Sign Up
               </Link>
             </div>
@@ -594,7 +594,7 @@ const LandingPage = () => {
               <Link to="/login" className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-lg text-center font-medium transition flex items-center justify-center">
                 <RiLoginBoxLine className="mr-2" /> Get Started
               </Link>
-              <Link to="/login" className="bg-blue-700 hover:bg-blue-800 text-white px-8 py-3 rounded-lg text-center font-medium transition flex items-center justify-center">
+              <Link to="/login?mode=signup" className="bg-blue-700 hover:bg-blue-800 text-white px-8 py-3 rounded-lg text-center font-medium transition flex items-center justify-center">
                 <RiUserAddLine className="mr-2" /> Sign Up
               </Link>
             </div>

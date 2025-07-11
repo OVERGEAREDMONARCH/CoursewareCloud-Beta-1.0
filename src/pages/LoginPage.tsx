@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 interface UserCredentials {
   email: string;
@@ -13,7 +13,9 @@ interface LoginPageProps {
 }
 
 const LoginPage: React.FC<LoginPageProps> = ({ mode }) => {
-  const [isLogin, setIsLogin] = useState(mode !== 'signup');
+  const [searchParams] = useSearchParams();
+  const urlMode = searchParams.get('mode');
+  const [isLogin, setIsLogin] = useState(mode !== 'signup' && urlMode !== 'signup');
   const [credentials, setCredentials] = useState<UserCredentials>({
     email: '',
     password: '',
@@ -64,7 +66,8 @@ const LoginPage: React.FC<LoginPageProps> = ({ mode }) => {
 
   React.useEffect(() => {
     if (mode) setIsLogin(mode !== 'signup');
-  }, [mode]);
+    else if (urlMode) setIsLogin(urlMode !== 'signup');
+  }, [mode, urlMode]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-900 to-gray-900 dark:from-gray-900 dark:to-gray-950 flex items-center justify-center p-4">
